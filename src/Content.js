@@ -1,83 +1,73 @@
 import React from "react";
 import { Layout} from 'antd';
 import { Row, Col } from 'antd';
+import axios from 'axios';
 const {Content} = Layout;
-
-function PageContent () {
-
-return (
- 
-    <Layout ClassName="layout" style={{ padding: '0 50px' }}>
+export default class FetchRandomImage extends React.Component
+ {
+    
+            state = {
+              error: null,
+              loading: true,
+              items: []
+            };
+          
+        
+          componentDidMount() {
+            axios.get("https://picsum.photos/v2/list?limit=6")
+            .then(response => {
+             // console.log("hello",response);
+              this.setState({
+                loading: false,
+                items: response.data
+              })
+            })
+            .catch(error => {
+              console.log(error);
+              this.setState({
+                loading: false,
+                error
+              })
+          
+            });
+          }
+        
+          render() {
+            const {loading, items } = this.state;
+            if(loading) {
+              return <div>Loading...</div>;
+            }
+            else{
+              return (
+                <Layout ClassName="layout" style={{ padding: '0 50px' }}>
   
-    <Content
-      className="site-layout-background"
-      style={{
-        padding: 0,
-        margin: 0,
-        minHeight: 240,
-      }}
-    >
-       <div className="site-layout-content">
-       <Row style={{ textAlign: "center", fontStyle:"oblique", fontWeight:"bolder", fontSize:"large" }}>
-      <Col span={8}>
-         
-            <p style={{ textAlign: "center" }} > Bolbola </p>
-      </Col>
-      <Col span={8}>
-            <p style={{ textAlign: "center" }} > Gigi </p>
-            </Col>
-      <Col span={8}> 
-            <p style={{ textAlign: "center" }} > Karol </p>
-            </Col>
-    </Row>
-    <Row style={{ textAlign: "center" }}>
-      <Col span={8}>
-          <img  style={{
-            resizeMode: "center",
-            height: 290,
-            width: 190}} alt="" src="https://i.pinimg.com/originals/6e/ca/27/6eca27e3a5c3fe4bc65de3e04057d483.jpg"/>
-           
-      </Col>
-      <Col span={8}> <img  style={{
-            resizeMode: "center",
-            height: 290,
-            width: 190}} alt="" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Gigi_Hadid._2015.jpg"/>
-           
-            </Col>
-      <Col span={8}> <img  style={{
-            resizeMode: "center",
-            height: 290,
-            width: 190}} alt="" src="https://live.staticflickr.com/4648/38771394610_647dcb75f7_b.jpg"/>
-           
-            </Col>
-    </Row>
-    <Row style={{ textAlign: "center", margin: '20px 0 0 0' }}>
-      <Col span={8}>
-          <img  style={{
-            resizeMode: "center",
-            height: 290,
-            width: 190}} alt="" src="https://www2.pictures.zimbio.com/gi/Bella+Hadid+Missoni+Runway+Milan+Fashion+Week+DyZYWbCykd2l.jpg"/>
-            
-      </Col>
-      <Col span={8}> <img  style={{
-            resizeMode: "center",
-            height: 290,
-            width: 190}} alt="" src="https://i.pinimg.com/originals/d3/bc/33/d3bc332862abb320da45def76e1f017e.jpg"/>
-           
-            </Col>
-      <Col span={8}> <img  style={{
-            resizeMode: "center",
-            height: 290,
-            width: 190}} alt="" src="https://data.whicdn.com/images/219123435/original.jpg"/>
-            
-            </Col>
-    </Row>
- 
-       </div>
+                <Content
+                
+                  className="site-layout-background"
+                  style={{
+                    padding: 20,
+                    margin: 20,
+                    minHeight: 240,
+                  }}> 
+                    
+                   <div className="site-layout-content">
+                   <Row style={{ textAlign: "center", margin: '20px 0 0 0' }}>
+                    <Col span={24} >
+                       {items.map(item => (
+                        <img  style={{
+                         resizeMode: "center",
+                         height:300,
+                         width:300,
+                         margin: '20px 20px 20px 20px' }} alt="" src={item.download_url} />))}
+                    </Col>
+                   </Row>
+                   </div> 
     </Content>
   </Layout>
-  
-);
-        }
-
-export default PageContent;
+                   
+      
+                    
+                );
+            }
+       }
+ }

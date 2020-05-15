@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout, Menu } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
-import PageContent from './Content';
+import FetchRandomImage from './Content';
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 
@@ -36,7 +36,7 @@ function SideBar (){
           </SubMenu>
         </Menu>
       </Sider>
-      <PageContent/>
+      <FetchRandomImage/>
     </Layout>
 
 );

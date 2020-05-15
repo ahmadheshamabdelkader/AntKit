@@ -1,11 +1,29 @@
 import React from "react";
-import { Form, Button, Menu, Dropdown } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+// import { Form, Button, Menu, Dropdown } from "antd";
+// import { DownOutlined } from "@ant-design/icons";
 import "./App.css";
+import NavBar from './navbar';
+import SideBar from './SideBar';
 
-function handleMenuClick(e) {
+
+function App (){
+  return(
+    <div>
+      
+      <NavBar />
+      <SideBar/>
+  
+    </div>
+  );
+}
+
+export default App;
+
+/*function handleMenuClick(e) {
   console.log("click", e);
 }
+
+
 
 const menu = (
   <Menu onClick={handleMenuClick}>
@@ -17,7 +35,7 @@ const menu = (
 
 const App = () => (
   <div>
-    <Form labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
+  <Form labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
       <Form.Item wrapperCol={{ span: 8, offset: 8 }}>
         <Button style={{ marginLeft: 8 }} type="primary">
           primary
@@ -29,8 +47,9 @@ const App = () => (
           </Button>
         </Dropdown>
       </Form.Item>
-    </Form>
-  </div>
-);
+    </Form> 
 
-export default App;
+  </div>
+);*/
+
+
