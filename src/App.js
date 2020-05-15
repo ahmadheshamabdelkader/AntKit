@@ -1,36 +1,37 @@
 import React from "react";
-import { Form, Button, Menu, Dropdown } from "antd";
-import { DownOutlined } from "@ant-design/icons";
 import "./App.css";
+// import { Layout, Menu, Breadcrumb } from "antd";
+import Navbar from "./navbar";
+import SideBar from "./SideBar";
+import { Layout,  Breadcrumb } from "antd";
+import PageContent from "./Content";
 
-function handleMenuClick(e) {
-  console.log("click", e);
+const { Content } = Layout;
+
+export default function App() {
+  return (
+    <Layout style={{ height: "100vh" }}>
+      <Navbar />
+      <Layout className="layout">
+      <SideBar/>
+        <Layout style={{ padding: "0 24px 24px" }}>
+          <Breadcrumb style={{ margin: "16px 0" }}>
+            <Breadcrumb.Item>Home</Breadcrumb.Item>
+            <Breadcrumb.Item>List</Breadcrumb.Item>
+            <Breadcrumb.Item>App</Breadcrumb.Item>
+          </Breadcrumb>
+          <Content
+            style={{
+              padding: 24,
+              margin: 0,
+              minHeight: 280,
+              background: '#fff',
+            }}
+          >
+            <PageContent/>
+          </Content>
+        </Layout>
+      </Layout>
+    </Layout>
+  );
 }
-
-const menu = (
-  <Menu onClick={handleMenuClick}>
-    <Menu.Item key="1">1st item</Menu.Item>
-    <Menu.Item key="2">2nd item</Menu.Item>
-    <Menu.Item key="3">3rd item</Menu.Item>
-  </Menu>
-);
-
-const App = () => (
-  <div>
-    <Form labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
-      <Form.Item wrapperCol={{ span: 8, offset: 8 }}>
-        <Button style={{ marginLeft: 8 }} type="primary">
-          primary
-        </Button>
-        <Button style={{ marginLeft: 8 }}>secondary</Button>
-        <Dropdown overlay={menu}>
-          <Button style={{ marginLeft: 8 }}>
-            Actions <DownOutlined />
-          </Button>
-        </Dropdown>
-      </Form.Item>
-    </Form>
-  </div>
-);
-
-export default App;
