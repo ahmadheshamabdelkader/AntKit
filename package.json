@@ -25,7 +25,8 @@
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "merge":"sudo yarn test --watchAll"
   },
   "eslintConfig": {
     "extends": "react-app"
