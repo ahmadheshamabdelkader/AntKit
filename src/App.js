@@ -1,19 +1,15 @@
 import React from "react";
 import "./App.css";
-import NavBar from './navbar';
-import SideBar from './SideBar';
+import NavBar from "./Components/Navbar";
+import SideBar from "./Components/SideBar";
 
-
-function App (){
-  return(
-    <div> 
+function App() {
+  return (
+    <div>
       <NavBar />
-      <SideBar/> 
+      <SideBar />
     </div>
   );
 }
 
 export default App;
-
-
-
