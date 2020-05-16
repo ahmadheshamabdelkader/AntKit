@@ -1,13 +1,13 @@
 import React from "react";
 import { Layout, Menu } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
-import PageContent from './Content';
+import FetchRandomImage from './FetchRandomImage';
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 
-function SideBar (){
-    return (
-       
+class SideBar extends React.Component{
+  render (){
+    return (    
     <Layout className="layout">
       <Sider width={200} className="site-layout-background" >
         <Menu
@@ -36,10 +36,11 @@ function SideBar (){
           </SubMenu>
         </Menu>
       </Sider>
-      <PageContent/>
+      <FetchRandomImage/>
     </Layout>
 
 );
+    }
         }
 
 export default SideBar;

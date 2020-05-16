@@ -3,8 +3,9 @@ import { Layout, Menu } from 'antd';
 
 const { Header } = Layout;
 
-function NavBar (){
-return (
+class NavBar extends React.Component{
+  render(){
+  return (
   <Layout className="layout">
     <Header>
       <Menu  theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
@@ -16,6 +17,7 @@ return (
   </Layout>
 
 );
+  }
 }
 
 export default NavBar;
