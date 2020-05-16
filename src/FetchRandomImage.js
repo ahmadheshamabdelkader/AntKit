@@ -3,6 +3,7 @@ import { Layout} from 'antd';
 import { Row, Col } from 'antd';
 import axios from 'axios';
 const {Content} = Layout;
+
 export default class FetchRandomImage extends React.Component
  {
     
@@ -16,7 +17,6 @@ export default class FetchRandomImage extends React.Component
           componentDidMount() {
             axios.get("https://picsum.photos/v2/list?limit=6")
             .then(response => {
-             // console.log("hello",response);
               this.setState({
                 loading: false,
                 items: response.data
